@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            background: #adaca1b8;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            background: #fffeef;
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 10px 0 50px;
+        }
+
+        .container h1 {
+            font-weight: 100;
+            text-transform: uppercase;
+            font-size: 25px;
+        }
+
+        .timer {
+            font-size: 50px;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+        }
+
+        .miliseconds {
+            margin-left: 150px;
+        }
+
+        .button {
+            margin-top: 25px;
+            font-size: 15px;
+            width: 110px;
+            border-radius: 5px;
+            border: 0.5px solid rgba(0, 0, 0, 0.123);
+            text-transform: uppercase;
+        }
+
+        .buttonStart {
+            background-color: #7ca0bb;
+        }
+
+        .buttonStart:hover {
+            background-color: #abbac5;
+        }
+
+        .buttonStart:active {
+            background-color: #588bb3;
+        }
+
+        .buttonContinue {
+            display: none;
+            background-color: #33ae81;
+        }
+
+        .buttonContinue:hover {
+            background-color: #93eccc;
+        }
+
+        .buttonContinue:active {
+            background-color: #238b65;
+        }
+
+        .buttonPause {
+            display: none;
+            background-color: #f59434;
+        }
+
+        .buttonPause:hover {
+            background-color: #ecba88;
+        }
+
+        .buttonPause:active {
+            background-color: #ba6b1c;
+        }
+
+        .buttonStop {
+            background-color: #ff3636;
+        }
+
+        .buttonStop:hover {
+            background-color: #e98787;
+        }
+
+        .buttonStop:active {
+            background-color: #c61c1c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Stopwatch</h1>
+        <div class="timer">
+            <div class="timerHours">00</div>
+            <h1>:</h1>
+            <div class="timerMinutes">00</div>
+            <h1>:</h1>
+            <div class="timerSeconds">00</div>
+        </div>
+        <div class="miliseconds">00</div>
+        <button onclick="startTimer()" class="button buttonStart">Start</button>
+        <button onclick="pauseTimer()" class="button buttonPause">Pause</button>
+        <button onclick="continueTimer()" class="button buttonContinue">Continue</button>
+        <button onclick="stopTimer()" class="button buttonStop">Stop</button>
+    </div>
+    <script>
+
+        let miliseconds = 0;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        let isPaused = true;
+
+        let startMiliseconds = {};
+        let startSeconds = {};
+        let startMinutes = {};
+        let startHours = {};
+
+        const timerFn = () => {
+
+                startMiliseconds = setInterval(() => {
+                    if(!isPaused) {
+                        miliseconds++;
+                        document.querySelector('.miliseconds').textContent = miliseconds;
+                        if (miliseconds === 100) {
+                            miliseconds = 0;
+                            document.querySelector('.miliseconds').textContent = miliseconds;
+                        } 
+                }}, 10);
+            
+
+                startSeconds = setInterval(() => {
+                    if(!isPaused) {
+                        seconds++;
+                    if (seconds < 10) {
+                        document.querySelector('.timerSeconds').textContent = `0${seconds}`;
+                    } else if (seconds > 9 && seconds < 57) {
+                        document.querySelector('.timerSeconds').textContent = seconds;
+                    } else if (seconds > 56 && seconds < 60) {
+                        document.querySelector('.timerSeconds').innerHTML = String(seconds)[0] + '</span><span style="color: red";>' + String(seconds)[1] + '</span>';
+                    } else {
+                        seconds = 0;
+                        document.querySelector('.timerSeconds').textContent = '00';
+                    }
+                }}, 1000)
+
+                startMinutes = setInterval(() => {
+                    if(!isPaused) {
+                        minutes++;
+                    if (minutes < 10) {
+                        document.querySelector('.timerMinutes').textContent = `0${minutes}`;
+                    } else if (minutes > 9 && minutes < 60) {
+                        document.querySelector('.timerMinutes').textContent = minutes;
+                    } else {
+                        minutes = 0;
+                        document.querySelector('.timerMinutes').textContent = '00';
+                    }
+                }}, 60000)
+
+                startHours = setInterval(() => {
+                    if(!isPaused) {
+                        hours++;
+                        document.querySelector('.timerHours').textContent = hours;
+                        if (hours === 23) {
+                            hours = 0;
+                        }
+                }}, 3600000)
+            }
+
+        const startTimer = () => {
+            document.querySelector('.buttonStart').style.display = 'none';
+            document.querySelector('.buttonPause').style.display = 'inline-block';
+            isPaused = false;  
+            timerFn();          
+        }
+ 
+        const pauseTimer = () => {
+                document.querySelector('.buttonPause').style.display = 'none';
+                document.querySelector('.buttonContinue').style.display = 'inline-block';
+                isPaused = true;
+            }
+
+        const continueTimer = () => {
+                document.querySelector('.buttonContinue').style.display = 'none';
+                document.querySelector('.buttonPause').style.display = 'inline-block';
+                isPaused = false;        
+        }
+
+        const stopTimer = () => {
+            clearInterval(startMiliseconds);
+            clearInterval(startSeconds);
+            clearInterval(startMinutes);
+            clearInterval(startHours);
+            miliseconds = 0;
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            document.querySelector('.buttonPause').style.display = 'none';
+            document.querySelector('.buttonContinue').style.display = 'none';
+            document.querySelector('.buttonStart').style.display = 'inline-block';
+            document.querySelector('.miliseconds').textContent = '00';
+            document.querySelector('.timerSeconds').textContent = '00';
+            document.querySelector('.timerMinutes').textContent = '00';
+            document.querySelector('.timerHours').textContent = '00';
+        }
+
+    </script>
+</body>
+
+</html>

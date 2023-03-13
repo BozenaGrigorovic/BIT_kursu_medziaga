@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namų darbai su ciklais</title>
+    <style>
+        body {
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        // 2022-12-05 Namų darbai
+        // Pirmoji užduotis
+
+        const number = rand(1, 6)
+
+        let rezultatas = '<h' + number + '>' + number + '</h' + number + '>'
+        document.write(rezultatas)
+
+        // Antroji užduotis
+
+        let number2 = 0;
+        let result = '';
+
+        for (let i = 0; i < 3; i++) {
+            number2 = rand(-10, 10)
+            if (number2 < 0)
+                result += '<span style="color:green">' + number2 + '</span></br>';
+            if (number2 === 0)
+                result += '<span style="color:red">' + number2 + '</span></br>';
+            if (number2 > 0)
+                result += '<span style="color:blue">' + number2 + '</span></br>';
+        }
+
+        document.write(result)
+
+        // Trečioji užduotis
+
+        const tekstas1 = 'An American in Paris'
+        const tekstas2 = "Breakfast at Tiffany's"
+        const tekstas3 = "2001: A Space Odyssey"
+        const tekstas4 = "It's a Wonderful Life"
+
+        const balses = 'AaEeIiOoUuYy'
+        let yrabalse = ''
+        let tekstas1result = '';
+        let tekstas2result = '';
+        let tekstas3result = '';
+        let tekstas4result = '';
+
+        for (i = 0; i < tekstas1.length; i++) {
+            for (x = 0; x < balses.length; x++) {
+                if (tekstas1[i] === balses[x]) {
+                    yrabalse = true;
+                    break;
+                }
+                else {
+                    yrabalse = false;
+                }
+            }
+            if (yrabalse === false) {
+                tekstas1result += tekstas1[i];
+            }
+        }
+
+        document.write(tekstas1result, '</br>');
+
+
+
+        for (i = 0; i < tekstas2.length; i++) {
+            for (x = 0; x < balses.length; x++) {
+                if (tekstas2[i] === balses[x]) {
+                    yrabalse = true;
+                    break;
+                }
+                else {
+                    yrabalse = false;
+                }
+            }
+            if (yrabalse === false) {
+                tekstas2result += tekstas2[i];
+            }
+        }
+
+        document.write(tekstas2result, '</br>');
+
+
+
+
+        for (i = 0; i < tekstas3.length; i++) {
+            for (x = 0; x < balses.length; x++) {
+                if (tekstas3[i] === balses[x]) {
+                    yrabalse = true;
+                    break;
+                }
+                else {
+                    yrabalse = false;
+                }
+            }
+            if (yrabalse === false) {
+                tekstas3result += tekstas3[i];
+            }
+        }
+
+        document.write(tekstas3result, '</br>');
+
+
+
+
+        for (i = 0; i < tekstas4.length; i++) {
+            for (x = 0; x < balses.length; x++) {
+                if (tekstas4[i] === balses[x]) {
+                    yrabalse = true;
+                    break;
+                }
+                else {
+                    yrabalse = false;
+                }
+            }
+            if (yrabalse === false) {
+                tekstas4result += tekstas4[i];
+            }
+        }
+
+        document.write(tekstas4result, '</br>');
+
+
+        // Ketvirtoji užduotis
+
+        let result4 = 0;
+        let counter = 0;
+
+        for (let i = 0; i < 300; i++) {
+            const random = rand(0, 300);
+            if (random > 150)
+                counter++;
+            if (random > 275)
+                result4 = '<span style="color:red">' + random + '</span>'
+            else
+                result4 = random;
+            document.write(result4, ' ');
+        }
+        document.write('</br> Reikšmių, didesnių nei 150 kiekis:', counter, '</br>')
+
+
+
+        //Penktoji užduotis
+
+
+        let resultx = '';
+        let resultLast = '';
+
+        i = 0;
+
+        while (i < 3000 - 77) {
+            resultLast = i
+            i += 77
+            resultx += resultLast + ', ';
+        }
+
+
+        document.write(resultx, i, '</br>');
+
+
+
+    </script>
+</body>
+
+</html>

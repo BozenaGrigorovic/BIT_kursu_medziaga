@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Pirmoji užduotis
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        const kiekis = rand(5, 3000);
+        let discount3 = kiekis * 0.03;
+        let discount4 = kiekis * 0.04;
+        let discountprice3 = kiekis - discount3;
+        let discountprice4 = kiekis - discount4;
+
+        console.log('Žvakių kiekis:', kiekis);
+
+        if (kiekis <= 1000)
+            console.log('Bendra kaina (be nuolaidos):', kiekis.toFixed(2))
+        else if (kiekis <= 2000)
+            console.log('Bendra kaina (su 3% nuolaida):', discountprice3.toFixed(2))
+        else
+            console.log('Bendra kaina (su 4% nuolaida):', discountprice4.toFixed(2));
+
+
+        //Antroji užduotis
+
+        const a = rand(0, 100);
+        const b = rand(0, 100);
+        const c = rand(0, 100);
+        const vidurkis1 = (b + c) / 2;
+        const vidurkis2 = (a + c) / 2;
+        const vidurkis3 = (a + b) / 2;
+
+        const vidurkis = (a + b + c) / 3;
+
+        console.log('Skaičių', a, b, c, 'aritmetinis vidurkis yra:', Math.round(vidurkis));
+
+        if (a < 10 || a > 90) {
+            if (b >= 10 && b <= 90) {
+                if (c >= 10 && c <= 90)
+                    console.log('Skaičių', b, 'ir', c, 'aritmetinis vidurkis yra:', Math.round(vidurkis1));
+            }
+        }
+        if (a >= 10 && a <= 90) {
+            if (b < 10 || b > 90) {
+                if (c >= 10 && c <= 90)
+                    console.log('Skaičių', a, 'ir', c, 'aritmetinis vidurkis yra:', Math.round(vidurkis2));
+            }
+        }
+
+        if (a >= 10 && a <= 90) {
+            if (b >= 10 && b <= 90) {
+                if (c < 10 || c > 90)
+                    console.log('Skaičių', a, 'ir', b, 'aritmetinis vidurkis yra:', Math.round(vidurkis3));
+            }
+        }
+
+
+        if (a < 10 || a > 90) {
+            if (b < 10 || b > 90) {
+                if (c >= 10 && c <= 90)
+                    console.log('Skaičius', c, 'yra vienintelis didesnis arba lygus 10 ir mažesnis arba lygus 90')
+            }
+        }
+
+        if (a < 10 || a > 90) {
+            if (b >= 10 && b <= 90) {
+                if (c < 10 || c > 90)
+                    console.log('Skaičius', b, 'yra vienintelis didesnis arba lygus 10 ir mažesnis arba lygus 90')
+            }
+        }
+
+        if (a >= 10 && a <= 90) {
+            if (b < 10 || b > 90) {
+                if (c < 10 || c > 90)
+                    console.log('Skaičius', a, 'yra vienintelis didesnis arba lygus 10 ir mažesnis arba lygus 90')
+            }
+        }
+
+
+        if (a < 10 || a > 90) {
+            if (b < 10 || b > 90) {
+                if (c < 10 || c > 90)
+                    console.log('Visi skaičiai yra mažesni už 10 arba didesni už 90, aritmetinis vidurkis nesikeičia');
+            }
+        }
+        if (a >= 10 && a <= 90) {
+            if (b >= 10 && b <= 90) {
+                if (c >= 10 && c <= 90)
+                    console.log('Visi skaičiai yra didesni arba lygus 10 ir mažesni arba lygus 90, aritmetinis vidurkis nesikeičia')
+            }
+        }
+
+
+        // Trečioji užduotis
+
+        let valandos = rand(0, 23);
+        let minutes = rand(0, 59);
+        let sekundes = rand(0, 59);
+
+        let valandos2 = valandos;
+        let minutes2 = minutes;
+        let sekundes2 = sekundes;
+  
+
+        console.log('Laikas', valandos, ':', minutes, ':', sekundes);
+
+        let pridejimas = rand(0, 300);
+
+        console.log('Pridedama sekundžių:', pridejimas)
+
+        sekundes2 = sekundes + pridejimas;
+
+        if (sekundes2 <= 59)
+            console.log('Naujas laikas:', valandos, ':', minutes, ':', sekundes2)
+
+        if (sekundes2 >=60 && sekundes2 <= 119)
+            {
+            minutes2++;
+            sekundes2 -= 60;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 == 24)
+                {
+                    valandos2 = 0;
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=60 && sekundes2 <= 119)
+            {
+            minutes2++;
+            sekundes2 -= 60;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 != 24)
+                {
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=60 && sekundes2 <= 119)
+            {
+            minutes2++;
+            sekundes2 -= 60;
+            if (minutes2 < 60)
+            {
+             console.log('Naujas laikas:', valandos, ':', minutes2, ':', sekundes2)
+                }
+        }
+
+
+
+
+        if (sekundes2 >=120 && sekundes2 <= 179)
+            {
+            minutes2 += 2;
+            sekundes2 -= 120;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 == 24)
+                {
+                    valandos2 = 0;
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=120 && sekundes2 <= 179)
+            {
+            minutes2 += 2;
+            sekundes2 -= 120;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 != 24)
+                {
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=120 && sekundes2 <= 179)
+            {
+            minutes2 += 2;
+            sekundes2 -= 120;
+            if (minutes2 < 60)
+            {
+             console.log('Naujas laikas:', valandos, ':', minutes2, ':', sekundes2)
+                }
+        }
+
+
+
+
+        if (sekundes2 >=240 && sekundes2 <= 299)
+            {
+            minutes2 += 4;
+            sekundes2 -= 240;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 == 24)
+                {
+                    valandos2 = 0;
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=240 && sekundes2 <= 299)
+            {
+            minutes2 += 4;
+            sekundes2 -= 240;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 != 24)
+                {
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=240 && sekundes2 <= 299)
+            {
+            minutes2 += 4;
+            sekundes2 -= 240;
+            if (minutes2 < 60)
+            {
+             console.log('Naujas laikas:', valandos, ':', minutes2, ':', sekundes2)
+                }
+        }
+
+
+
+
+
+        if (sekundes2 >=300 && sekundes2 <= 359)
+            {
+            minutes2 += 5;
+            sekundes2 -= 300;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 == 24)
+                {
+                    valandos2 = 0;
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=300 && sekundes2 <= 359)
+            {
+            minutes2 += 5;
+            sekundes2 -= 300;
+            if (minutes2 >= 60)
+            {
+            valandos2++;
+            minutes2 -= 60;
+            }
+                if (valandos2 != 24)
+                {
+                    console.log('Naujas laikas:', valandos2, ':', minutes2, ':', sekundes2)
+                }
+        }
+        if (sekundes2 >=300 && sekundes2 <= 359)
+            {
+            minutes2 += 5;
+            sekundes2 -= 300;
+            if (minutes2 < 60)
+            {
+             console.log('Naujas laikas:', valandos, ':', minutes2, ':', sekundes2)
+                }
+        }
+    
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friday Challenge 2022-12-10</title>
+    <style>
+        body {
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+// Pirmoji užduotis
+
+document.write('<h2>Pirmoji užduotis</h2>');
+
+let masyvas = [];
+let counterA = 0;
+let counterB = 0;
+let counterC = 0;
+let counterD = 0;
+
+for(let i = 0; i < 200; i++) {
+    masyvas[i] = rand(1, 4)
+
+    if (masyvas[i] === 1) {
+        masyvas[i] = 'A'
+        counterA++;
+    }
+    if (masyvas[i] === 2) {
+        masyvas[i] = 'B'
+        counterB++;
+    }
+    if (masyvas[i] === 3) {
+        masyvas[i] = 'C'
+        counterC++;
+    }
+    if (masyvas[i] === 4) {
+        masyvas[i] = 'D'
+        counterD++;
+    }
+}
+
+document.write('<br/> Raidės: ' + masyvas + '<br/>' + 'Raidžių "A" kiekis: ' + counterA + '<br/>' + 'Raidžių "B" kiekis: ' + counterB + '<br/>' + 'Raidžių "C" kiekis: ' + counterC + '<br/>' + 'Raidžių "D" kiekis: ' + counterD);
+
+// Antroji užduotis
+
+document.write('<h2>Antroji užduotis</h2>');
+
+document.write('Abecėlės tvarka išrūšiuotas masyvas: ' + masyvas.sort());
+
+// Trečioji užduotis
+
+document.write('<h2>Trečioji užduotis</h2>');
+
+let masyvas1 = [];
+let masyvas2 = [];
+let masyvas3 = [];
+let sudetasMasyvas = [];
+
+for(let i = 0; i < 200; i++) {
+    masyvas1[i] = rand(1, 4);
+
+    if (masyvas1[i] === 1) {
+        masyvas1[i] = 'A';
+    }
+    if (masyvas1[i] === 2) {
+        masyvas1[i] = 'B';
+    }
+    if (masyvas1[i] === 3) {
+        masyvas1[i] = 'C';
+    }
+    if (masyvas1[i] === 4) {
+        masyvas1[i] = 'D';
+    }
+}
+
+for(let i = 0; i < 200; i++) {
+    masyvas2[i] = rand(1, 4);
+
+    if (masyvas2[i] === 1) {
+        masyvas2[i] = 'A';
+    }
+    if (masyvas2[i] === 2) {
+        masyvas2[i] = 'B';
+    }
+    if (masyvas2[i] === 3) {
+        masyvas2[i] = 'C';
+    }
+    if (masyvas2[i] === 4) {
+        masyvas2[i] = 'D';
+    }
+}
+
+for(let i = 0; i < 200; i++) {
+    masyvas3[i] = rand(1, 4);
+
+    if (masyvas3[i] === 1) {
+        masyvas3[i] = 'A';
+    }
+    if (masyvas3[i] === 2) {
+        masyvas3[i] = 'B';
+    }
+    if (masyvas3[i] === 3) {
+        masyvas3[i] = 'C';
+    }
+    if (masyvas3[i] === 4) {
+        masyvas3[i] = 'D';
+    }
+}
+
+let counterReiksmes = 0;
+
+for(let i = 0; i < 200; i++) {
+    sudetasMasyvas[i] = masyvas1[i] + masyvas2[i] + masyvas3[i];
+    if (masyvas1[i] != masyvas2[i] && masyvas2[i] != masyvas3[i] && masyvas3[i] != masyvas1[i]) {
+        counterReiksmes++;
+    }
+
+}
+
+document.write('Trijų raidžių kombinacijų masyvas:' + sudetasMasyvas + '<br/>');
+document.write('Elementų su unikaliom reikšmėm kiekis:' + counterReiksmes + '<br/>');
+
+
+sudetasMasyvas.sort();
+
+let counterKombinacijos = 0;
+
+for(let i = 0; i < 200; i++) {
+    if (sudetasMasyvas[i] != sudetasMasyvas[i - 1] && sudetasMasyvas[i] != sudetasMasyvas[i + 1]) {
+        counterKombinacijos++;
+    }
+}
+
+document.write('Elementų su unikaliom kombinacijom kiekis:' + counterKombinacijos);
+
+
+// Ketvirtoji užduotis
+
+document.write('<h2>Ketvirtoji užduotis</h2>');
+
+masyvas = [];
+
+for (let i = 0; i < 100; i++) {
+    let random = rand(100, 999);
+    while(masyvas.includes(random)) {
+        random = rand(100, 999);
+    }
+    masyvas[i] = random;
+}
+
+masyvas1 = [];
+
+for (let i = 0; i < 100; i++) {
+    let random = rand(100, 999);
+    while(masyvas1.includes(random)) {
+        random = rand(100, 999);
+    }
+    masyvas1[i] = random;
+}
+
+document.write('Pirmasis masyvas su unikaliom reikšmėm:' + masyvas + '<br/>');
+document.write('Antrasis masyvas su unikaliom reikšmėm:' + masyvas1 + '<br/>');
+
+// Penktoji užduotis
+
+document.write('<h2>Penktoji užduotis</h2>');
+
+let naujasMasyvas = [];
+
+for (let i = 0; i < masyvas.length; i++) {
+    if (!masyvas1.includes(masyvas[i])) {
+        naujasMasyvas.push(masyvas[i]);
+    }
+}
+
+document.write(naujasMasyvas);
+
+// Šeštoji užduotis
+
+document.write('<h2>Šeštoji užduotis</h2>');
+
+naujasMasyvas = [];
+
+for (let i = 0; i < masyvas.length; i++) {
+    if (masyvas1.includes(masyvas[i])) {
+        naujasMasyvas.push(masyvas[i]);
+    }
+}
+
+document.write(naujasMasyvas);
+    </script>
+
+
+
+</body>
+</html>

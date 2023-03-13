@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        class Vaisius {
+            constructor() {
+                this.dydis = rand(5, 25);
+                this.id = rand(1000000, 9999999);
+                this.prakastas = false;
+            }
+
+            prakasti() {
+                this.prakastas = true;
+                return this;
+            }
+        }
+
+        class Krepsys {
+            static vaisiai = [];
+
+            static pripildyti() {
+                while (this.vaisiai.length < 20) {
+                    this.vaisiai.push(new Vaisius());
+                }
+                return this.vaisiai.sort((a,b) => b.dydis - a.dydis );
+            }
+
+            static isimti() {
+                this.isimtasVaisius = this.vaisiai.shift();
+                return this.isimtasVaisius;
+            }
+        }
+
+        console.log(Krepsys.pripildyti());
+
+        Krepsys.isimti();
+
+        console.log(Krepsys.vaisiai);
+
+        console.log(Krepsys.isimti());
+        console.log(Krepsys.vaisiai);
+        Krepsys.pripildyti();
+        console.log(Krepsys.vaisiai);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namų darbai</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+//Pirmoji užduotis
+
+const skaicius1 = rand(0, 4);
+const skaicius2 = rand(0, 4);
+const maxSkaicius = Math.max(skaicius1, skaicius2);
+const minSkaicius = Math.min(skaicius1, skaicius2);
+const dalyba = maxSkaicius / minSkaicius;
+console.log(skaicius1);
+console.log(skaicius2);
+
+if (minSkaicius == 0)
+    console.log('Negalima atlikti dalybos, kadangi mažesnis skaičius yra lygus 0')
+    else if (dalyba == 1 || dalyba == 2 || dalyba == 3 || dalyba == 4)
+    console.log('Didesnį skaičių', maxSkaicius, 'padalinus iš mažesnio skaičiaus', minSkaicius, 'yra lygu', dalyba)
+    else
+console.log('Didesnį skaičių', maxSkaicius, 'padalinus iš mažesnio skaičiaus', minSkaicius, 'yra lygu', dalyba.toFixed(2));
+
+
+//Antroji užduotis
+
+const skaicius21 = rand(0, 25);
+const skaicius22 = rand(0, 25);
+const skaicius23 = rand(0, 25);
+
+console.log(skaicius21);
+console.log(skaicius22);
+console.log(skaicius23);
+
+const bendrai = skaicius21 + skaicius22 + skaicius23
+const vidurkis = bendrai - Math.max(skaicius21, skaicius22, skaicius23) - Math.min(skaicius21, skaicius22, skaicius23)
+
+if (skaicius21 == skaicius22 || skaicius22 == skaicius23 || skaicius23 == skaicius21)
+    console.log('Neįmanoma išskirti vidurinės reikšmės kadangi yra du ar daugiau vienodų skaičių')
+    else
+        console.log('Vidurinė reikšmė yra lygi', vidurkis);
+
+//Trečioji užduotis
+
+let aktorius1 = 'Johny Depp';
+let aktorius2 = 'Angelina Jolie';
+let pavarde1 = aktorius1.indexOf(' ');
+let pavarde2 = aktorius2.indexOf(' ');
+pavarde1++;
+pavarde2++;
+
+console.log(aktorius1);
+console.log(aktorius1[0] + aktorius1[pavarde1]);
+console.log(aktorius2);
+console.log(aktorius2[0] + aktorius2[pavarde2]);
+
+//Ketvirtoji užduotis
+
+let abecele = 'abcdefghijklmnopqrstuvwxyz';
+const a = rand(0, 25);
+const b = rand(0, 25);
+const c = rand(0, 25);
+console.log('Tai yra atsitiktinis trijų mažųjų raidžių stringas:', abecele[a] + abecele[b] + abecele[c]);
+
+    </script>
+</body>
+</html>

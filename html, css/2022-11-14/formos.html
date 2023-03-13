@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .relative {
+            position: relative;
+            background-color: #f5f5f5;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid #c0bcbc;
+            padding: 20px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13px;
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .postboxes {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .postbox-name {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin: 0px auto 15px;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #c0bcbc;
+            text-align: center;
+        }
+
+        .line__content {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .form__title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            margin-left: 12px;
+            font-size: 1.1em;
+        }
+
+        .form__item {
+            display: grid;
+            width: 45%;
+            margin: 0 15px;
+        }
+
+        .form__item_wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .boxsize {
+            height: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .postbox_logo {
+            height: 32px;
+        }
+
+        .shipping_price {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .postbox-name p {
+            line-height: 2;
+            margin-bottom: 0;
+        }
+
+        .red_star {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="relative">
+        <form>
+            <h3 class="form__title">Pristatymas į paštomatus</h3>
+            <div class="postboxes">
+                <div class="postbox-name">
+                    <label>
+                        <input type="radio" name="postbox" />
+                        <p>
+                            <img class="postbox_logo" src="lpxpress_logo.png" alt="LP Express logo"> <br />
+                            <strong>Atsiėmimas LP Express paštomate</strong> <br />
+                            2-4 darbo dienos <br />
+                            <span class="shipping_price">1,99 €</span>
+                        </p>
+                    </label>
+                </div>
+                <div class="postbox-name">
+                    <label>
+                        <input type="radio" name="postbox" />
+                        <p>
+                            <img class="postbox_logo" src="omniva_logo.png" alt="LP Express logo"> <br />
+                            <strong>Atsiėmimas Omniva paštomate</strong> <br />
+                            2-4 darbo dienos <br />
+                            <span class="shipping_price">1,99 €</span>
+                        </p>
+                    </label>
+                </div>
+                <div class="postbox-name">
+                    <label>
+                        <input type="radio" name="postbox" />
+                        <p>
+                            <img style="height: 35px;" class="postbox_logo" src="dpd_logo.png" alt="LP Express logo">
+                            <br />
+                            <strong>Atsiėmimas DPD paštomate</strong> <br />
+                            2-4 darbo dienos <br />
+                            <span class="shipping_price"> 1,99 € </span>
+                        </p>
+                    </label>
+                </div>
+            </div>
+            <h3 class="form__title">Pasirinkite pristatymo vietą</h3>
+            <div class="form__item_wrapper">
+                <div class="form__item">
+                    <label for="postbox_city">Miestas<span class="red_star">*</span></label>
+                    <select class="boxsize" id="postbox_city">
+                        <option value="1">Garliava</option>
+                        <option value="2">Kaunas</option>
+                        <option value="3">Klaipėda</option>
+                        <option value="4">Vilnius</option>
+                    </select>
+                </div>
+                <div class="form__item">
+                    <label for="postbox_address">Paštomato adresas (paštomatas)<span class="red_star">*</span></label>
+                    <select class="boxsize" id="postbox_address">
+                        <option value="1">IKI Garliava (Vytauto g. 67)</option>
+                        <option value="2">Kaunas</option>
+                        <option value="3">Klaipėda</option>
+                        <option value="4">Vilnius</option>
+                    </select>
+                </div>
+            </div>
+            <h3 class="form__title"></label>Pateikite gavėjo duomenis</h3>
+            <div class="form__item_wrapper">
+                <div class="form__item">
+                    <label>Vardas<span class="red_star">*</span></label>
+                    <input class="boxsize" type="text" placeholder="Vardenis" required />
+                </div>
+                <div class="form__item">
+                    <label>Pavardė<span class="red_star">*</span></label>
+                    <input class="boxsize" type="text" placeholder="Pavardenis" required />
+                </div>
+                <div class="form__item">
+                    <label>Mobilaus telefono numeris<span class="red_star">*</span></label>
+                    <input class="boxsize" type="tel" placeholder="+37060012345" required />
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

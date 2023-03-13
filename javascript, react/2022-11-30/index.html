@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022-11-30 Namų darbas</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); 
+}
+
+        let a = 'Johny';
+
+        let b = 'Depp';
+
+        console.log(a, b);
+
+        let c = 'Božena';
+
+        let d = 'Grigorovič';
+
+        let e = 1993;
+
+        let f = 2022;
+
+        let g = f -= e;
+
+        console.log('Aš esu', c, d, 'Man yra', g, 'metai(ų)')
+
+        let h = a[2] + a[3] + a[4] + b[1] + b[2] + b[3];
+
+        console.log(h);
+
+        let i = 'Once upon a time in hollywood'
+
+        modifikuotasi = i.replaceAll('O', '*').replaceAll('o', '*');
+
+        console.log(modifikuotasi);
+
+        let j = rand(0, 2);
+        let k = rand(0, 2);
+        let l = rand(0, 2);
+        let m = rand(0, 2);
+
+        console.log(j, k, l, m);
+
+        let counter0 = 0;
+        let counter1 = 0;
+        let counter2 = 0;
+
+        if(j == 0) {
+            counter0 += 1;
+        }
+
+        if(k == 0) {
+            counter0 += 1;
+        }
+
+        if(l == 0) {
+            counter0 += 1;
+        }
+
+        if(m == 0) {
+            counter0 += 1;
+        }
+        if(j == 1) {
+            counter1 += 1;
+        }
+
+        if(k == 1) {
+            counter1 += 1;
+        }
+
+        if(l == 1) {
+            counter1 += 1;
+        }
+
+        if(m == 1) {
+            counter1 += 1;
+        }
+        if(j == 2) {
+            counter2 += 1;
+        }
+
+        if(k == 2) {
+            counter2 += 1;
+        }
+
+        if(l == 2) {
+            counter2 += 1;
+        }
+
+        if(m == 2) {
+            counter2 += 1;
+        }
+
+
+        console.log('Nulių kiekis =', counter0, '/ Vienietų kiekis =', counter1, '/ Dvejetų kiekis =', counter2);
+    </script>
+</body>
+</html>

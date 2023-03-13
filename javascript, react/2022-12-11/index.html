@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022-12-08 Namų darbai</title>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //Pirmoji užduotis
+
+        document.write('<h2>Pirmoji užduotis</h2>');
+
+        let totalKazys = 0;
+        let totalPetras = 0;
+
+        while (true) {
+            let Kazys = rand(5, 25)
+            let Petras = rand(10, 20)
+            totalKazys += Kazys
+            totalPetras += Petras
+            document.write('Kazio taškų kiekis:' + Kazys + '<br/>' + 'Petro taškų kiekis:' + Petras + '<br/>');
+            if (Kazys > Petras) {
+                document.write('Partiją laimėjo Kazys' + '<br/>');
+            } else if (Kazys === Petras) {
+                document.write('Lygiosios <br/>');
+            } else {
+                document.write('Partiją laimėjo Petras' + '<br/>');
+            }
+
+            if (totalKazys >= 222 || totalPetras >= 222) {
+                break;
+            }
+        }
+
+        document.write('Bendras Kazio taškų kiekis: ' + totalKazys + '<br/>' + 'Bendras Petro taškų kiekis: ' + totalPetras + '<br/>')
+        if (totalKazys > totalPetras) {
+            document.write('Žaidimą laimėjo Kazys <br/>');
+        } else if (totalKazys === totalPetras) {
+            document.write('Žaidimas pasibaigė lygiosiomis <br/>');
+        } else {
+            document.write('Žaidimą laimėjo Petras <br/>')
+        }
+
+        //Antroji užduotis
+        document.write('<h2>Antroji užduotis</h2>');
+        document.write('<h3>A dalis</h3>');
+        let counter = 0;
+        let viniesKalimas = 0;
+
+        for (let i = 0; i < 5; i++) {
+            while (viniesKalimas < 85) {
+                counter++
+                viniesKalimas += rand(5, 20);
+            }
+            viniesKalimas = 0;
+        }
+
+
+        document.write('Penkioms vinims įkalti prireikė smūgių: ' + counter + '<br/>');
+
+        document.write('<h3>B dalis</h3>');
+
+        counter = 0;
+
+        for (let i = 0; i < 5; i++) {
+            while (viniesKalimas < 85) {
+                counter++
+                let smugis = rand(0, 1);
+                if (smugis === 1) {
+                        viniesKalimas += rand(20, 30);
+                } else {
+                    viniesKalimas += 0;
+                }
+                console.log(counter, viniesKalimas);
+            }
+            viniesKalimas = 0;
+        }
+        document.write('Penkioms vinims įkalti prireikė smūgių: ' + counter + '<br/>');
+
+
+        // Trečioji užduotis
+        document.write('<h2>Trečioji užduotis</h2>');
+
+        let stringas = '';
+        let stringas2 = [];
+
+        for (let i = 0; i < 50; i++) {
+            let random = rand(1, 200)
+            while(stringas.includes(random)) {
+            random = rand(1, 200);
+            }
+            stringas += random + ' ';
+            let pirminisSkaicius = true;
+            for (let x = 2; x < random; x ++) {
+                if (random % x === 0) {
+                    pirminisSkaicius = false
+                    break;
+                }
+            }
+            if (pirminisSkaicius === true) 
+            stringas2.push(random);
+        }
+
+        stringas2.sort((a, b) => a - b);
+
+        document.write('Stringas: ' + stringas + '<br/>' + 'Stringas su pirminiais skaičiais: ' + stringas2.join(' ') + '<br/>');
+
+
+    </script>
+</body>
+
+</html>

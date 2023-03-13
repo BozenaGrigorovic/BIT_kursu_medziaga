@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022-12-14 Namų darbai</title>
+    <style>
+        body {
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //Masyvai
+        document.write('<h2>Masyvai</h2>');
+        //1 užduotis
+        //Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai 
+        //nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. 
+        //Penktas trečio ir ketvirto suma ir t.t.
+        document.write('<h3>Pirmoji užduotis</h3>');
+
+        let array = [rand(5, 25), rand(5, 25)];
+
+        for (let i = 0; i < 8; i++) {
+            array.push(array[i] + array[i + 1]);
+        }
+
+        document.write(array);
+
+        //2 užduotis
+        //Sukurkite masyvą iš 10 elementų. Kiekvienas masyvo elementas turi būti masyvas 
+        //su atsitiktiniu kiekiu nuo 2 iki 20 elementų. Elementų reikšmės atsitiktinai parinktos 
+        //raidės iš intervalo A-Z. Išrūšiuokite antro lygio masyvus pagal abėcėlę 
+        //(t.y. tuos kur su raidėm).
+        document.write('<h3>Antroji užduotis</h3>');
+
+        array = [];
+        const string = 'abcdefghijklmnoprstuvwqxyz';
+        for (let i = 0; i < 10; i++) {
+            let innerArray = [];
+            let arrayLength = rand(2, 20);
+            for (let x = 0; x < arrayLength; x++) {
+                innerArray.push(string[rand(0, string.length - 1)]);
+            }
+            array.push(innerArray.sort());
+        }
+
+        // let map1 = array.map(x => '<br/>' + x);
+        let map1 = array.join('<br/>');
+
+        document.write(map1);
+        console.log(array);
+
+        //Funkcijos
+        document.write('<h2>Funkcijos</h2>');
+        document.write('<h3>Pirmoji užduotis</h3>');
+        //1 užduotis
+        //Sukurkite funkciją kuri pakeltų paduotą skaičių n laipsniu, ir grąžintų 
+        //reikšmę (perduodami du parametrai: skaičius ir laipsnis)
+
+        const numberByDegree = (number, degree) => number ** degree;
+
+
+        document.write('6 kvadratu lygu: ', numberByDegree(6, 2));
+
+        //2 Užduotis
+        document.write('<h3>Antroji užduotis</h3>');
+
+        // Parašykite funkciją, kurios argumentas būtų tekstas, kuris yra įterpiamas į 
+        // h1 tagą. Rezultatą atvaizduokite naršyklėje.
+
+        const h1Tag = text => '<h1>' + text + '</h1>';
+
+        document.write('2 užduoties sprendimo atvaizdavimas naršyklėje:', h1Tag('Labas Pasauli!'));
+
+        //3 Užduotis
+        document.write('<h3>Trečioji užduotis</h3>');
+
+        const hTag = (text, tag) => '<h' + tag + '>' + text + '</h' + tag + '>';
+
+        document.write('3 užduoties sprendimo atvaizdavimas naršyklėje:', hTag('Labas Pasauli!', 5));
+
+        //4, 5 Užduotys
+        document.write('<h3>Ketvirtoji + Penktoji užduotys</h3>');
+        //Aprašykite funkciją kuri priimtų vieną parametrą 
+        //"number" bei patikrintų ar duotas skaičius yra pirminis. 
+        //Atgal grąžinkite teigiamą arba neigiamą (boolean) atsakymą.
+
+        const primeNumberChecker = number => {
+            let isPrime = true;
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            return isPrime;
+        }
+
+        console.log(primeNumberChecker(8));
+        document.write('Ar skaičius 8 yra pirminis? ', primeNumberChecker(8) + '<br/>'
+            + 'Ar skaičius 599 yra pirminis? ', primeNumberChecker(599));
+
+    //6, 7 Užduotys
+    document.write('<h3>Šeštoji + Septintoji užduotys</h3>');
+    //Sugeneruokite 100 elementų masyvą kurio reikšmės atsitiktiniai skaičiai
+    //nuo 997 iki 15991.
+    //Pasinaudodami penktoje užduotyje aprašyta funkcija masyve palikite 
+    //tik pirminius skaičius, kurie yra didesni nei 5000;
+
+        array = [];
+        for(let i = 0; i < 100; i++) {
+            array.push(rand(997, 15991));
+        }
+
+        console.log(array);
+
+        let primeNumbersArray = array.filter(el => el > 5000 && primeNumberChecker(el) === true);
+
+        console.log(primeNumbersArray);
+
+        document.write('<h4>Random skaičių masyvo atvaizdavimas:</h4>', array, '<h4>Iš masyvo išimti pirminiai skaičiai, didesni nei 5000:</h4>', primeNumbersArray);
+
+    </script>
+</body>
+
+</html>

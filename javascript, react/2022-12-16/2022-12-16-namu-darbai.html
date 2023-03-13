@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //2022-12-16 Namų darbai
+        //1 Užduotis
+        document.write('<h2>1 užduotis</h2>');
+
+        const array = [];
+
+        for (let i = 0; i < 10; i++) {
+            array[i] = [];
+            for (let x = 0; x < 5; x++) {
+                array[i].push(rand(5, 25));
+            }
+        }
+
+        console.log(array);
+        document.write('Masyvo atvaizdavimas naršyklėje: <br/>', array);
+
+        //2 Užduotis
+        document.write('<h2>2 užduotis</h2>');
+        document.write('<h3>A dalis</h3>');
+
+        let counter = 0;
+
+        for (const level1 in array) {
+            for (const level2 in array[level1]) {
+                if (array[level1][level2] > 10)
+                    counter++;
+            }
+        }
+
+        document.write('Reikšmių, didesnių už 10 kiekis masyve: ', counter);
+
+        document.write('<h3>B dalis</h3>');
+
+        let maxValue = 0;
+
+        for (const level1 in array) {
+            for (const level2 in array[level1]) {
+                if (array[level1][level2] > maxValue)
+                    maxValue = array[level1][level2];
+            }
+        }
+
+        document.write('Didžiausia reikšmė masyve: ', maxValue);
+
+        document.write('<h3>C dalis</h3>');
+
+        for (let i = 0; i < 5; i++) {
+            let arrayIndexSum = 0;
+            for (let x = 0; x < 10; x++) {
+                arrayIndexSum += array[x][i];
+            }
+            document.write('Antro lygio masyvų su indeksu ', i, ' suma yra lygi: ', arrayIndexSum, '<br/>');
+        }
+
+        document.write('<h3>D dalis</h3>');
+
+        for (const level1 in array) {
+            array[level1].push(rand(5, 25), rand(5, 25));
+        }
+
+        console.log(array);
+        document.write('Iki 7 elementų pailginti 2 lygio masyvai: <br/>', array);
+
+        document.write('<h3>E dalis</h3>');
+
+        const newArray = [];
+
+        for (level1 in array) {
+            let arraySumm = 0;
+            for (level2 in array[level1]) {
+                arraySumm += array[level1][level2];
+            }
+            newArray.push(arraySumm);
+        }
+
+        console.log(newArray);
+        document.write('Naujas masyvas, kurio reikšmės yra senojo 2 lygio masyvų elementų sumos: <br/>', newArray);
+
+
+        //3 Užduotis
+        document.write('<h2>3 užduotis</h2>');
+
+        let generatedArray = [];
+
+        for (let i = 0; i < 10; i++) {
+            let arrayLength = rand(0, 5);
+            if (arrayLength === 0) {
+                generatedArray[i] = (rand(0, 10));
+            } else {
+                generatedArray[i] = [];
+                for (let x = 0; x < arrayLength; x++) {
+                    generatedArray[i].push(rand(0, 10));
+                }
+            }
+        }
+
+        console.log(generatedArray);
+        document.write('Pagal 3 užduotį sukurto masyvo atvaizdavimas naršyklėje: <br/>', generatedArray);
+
+        //4 Užduotis
+        document.write('<h2>4 užduotis</h2>');
+
+        let sortedArray = [];
+
+        for (level1 in generatedArray) {
+            if (typeof generatedArray[level1] != 'number') {
+                sortedArray[level1] = 0;
+                for (level2 in generatedArray[level1]) {
+                    sortedArray[level1] += generatedArray[level1][level2];
+                }
+            } else {
+                sortedArray[level1] = generatedArray[level1];
+            }
+        }
+
+        sortedArray = sortedArray.sort(function (a, b) { return a - b });
+
+        console.log(sortedArray);
+        document.write('Išrūšiuotas naujas masyvas: <br/>', sortedArray);
+    </script>
+</body>
+
+</html>

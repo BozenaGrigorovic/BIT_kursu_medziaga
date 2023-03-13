@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022-12-13 Namų darbai</title>
+</head>
+<body>
+    <script>
+function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// Pirmoji užduotis
+document.write('<h2>Pirmoji užduotis</h2>');
+
+const enterName = (name) => {
+    document.write('Labas, ' + name);
+}
+
+let vardas = 'Božena';
+enterName(vardas);
+
+// Antroji užduotis
+document.write('<h2>Antroji užduotis</h2>');
+
+const stringLength = (string) => {
+    return string.length;
+}
+
+let string = 'Sukurkite funkciją  kuri priimtų vieną parametrą (tekstą) ir grąžintų atsakymą kiek simbolių yra tame tekste. Iš funkcijos gautą rezultatą atvaizduokite naršyklėje.'
+document.write('Simbolių kiekis stringe:' + stringLength(string));
+
+// Trečioji užduotis
+document.write('<h2>Trečioji užduotis</h2>');
+
+const nameSurname = (name, last_name) => {
+name = name.toLowerCase()
+last_name = last_name.toLowerCase()
+return name[0].toUpperCase() + name.substring(1) + ' ' + 
+    surname[0].toUpperCase() + surname.substring(1);
+}
+
+let name = 'BOŽENA';
+let surname = 'grigorovič';
+
+document.write(nameSurname(name, surname));
+
+// Ketvirtoji užduotis
+
+const randomGenerator = (index) => {
+    let result = [];
+    for (let i = 0; i < index; i++) {
+        result.push(rand(0, 5));
+    }
+    console.log(result.join(', '));
+}
+
+randomGenerator(3);
+
+// Penktoji užduotis
+document.write('<h2>Penktoji užduotis</h2>');
+
+const arrayGenerator = (from, to, limit) => {
+    let result = [];
+    if (typeof from === 'number' && typeof to === 'number' && typeof limit === 'number') {
+        for (let i = 0; i < limit; i++) {
+        result.push(rand(from, to));
+        }
+    } else result.push('error')
+    return result;
+}
+
+result = arrayGenerator(1, 15, 10);
+
+console.log(result);
+document.write(result);
+
+    </script>
+</body>
+</html>

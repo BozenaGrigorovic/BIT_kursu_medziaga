@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <title>Friday Challenge 2022-12-26</title>
+    <style>
+        body {
+            background: #ebebeb;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+        }
+
+        form {
+            gap: 10px;
+            justify-content: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            justify-content: space-between;
+            margin: 0 40px;
+            line-height: 5px;
+        }
+
+        .alignRight {
+            gap: 10px;
+        }
+
+        .alignRight button {
+            height: 20px;
+            margin: auto 0;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-left: 40px;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-weight: 400;
+        }
+
+        h4 {
+            text-align: center;
+            font-weight: 300;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Prekių krepšelis</h1>
+        <form onsubmit="addResult(event)" class="d-flex">
+            <input type="text" name="itemName" placeholder="Įveskite prekės pavadinimą" />
+            <input type="number" min="1" name="qty" placeholder="Įveskite kiekį" />
+            <button>Pridėti</button>
+        </form>
+        <div class="shoppingCart">
+            <h4>Krepšelyje kol kas neturite jokių prekių.</h4>
+        </div>
+    </div>
+    <script>
+        const data = [];
+        let quantity = 0;
+
+        const showResults = () => {
+
+            let result = '';
+
+            data.map((product, index) => {
+                result += ` 
+                <li class="d-flex">
+                    <h4>${product.itemName}</h4>
+                    <div class="alignRight d-flex">
+                        <h4>${product.qty}x</h4>
+                        <button onclick="deleteItem(${index})">Pašalinti</button>
+                    </div>
+                </li>
+            `;
+                quantity += product.qty;
+            }
+            )
+            if (quantity != 0) {
+                document.querySelector('.shoppingCart').innerHTML = `
+                <ul>
+                    ${result}
+                    <li class="d-flex">
+                        <h3>Viso prekių:</h3>
+                        <h3>${quantity}</h3>
+                    </li>
+                </ul>
+                    `;
+            } else {
+                document.querySelector('.shoppingCart').innerHTML = '<h4>Jūsų prekių krepšelis yra tuščias</h4>';
+            }
+        }
+
+        const deleteItem = (index) => {
+            quantity = 0;
+            delete data[index];
+            showResults();
+        }
+
+        const addResult = (event) => {
+            event.preventDefault();
+            let item = document.querySelector('[name="itemName"]').value;
+            const product = {
+                itemName: item[0].toUpperCase() + item.slice(1),
+                qty: Number(document.querySelector('[name="qty"]').value)
+            }
+
+            data[data.length] = product;
+            quantity = 0;
+            document.querySelector('form').reset();
+            showResults();
+        }
+    </script>
+</body>
+
+</html>
